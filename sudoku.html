@@ -1,0 +1,33 @@
+<html>
+    <!-- A sudoku solver
+         Roni Zaharia, 8 September 2021 -->
+    <head>
+        <script src="sudoku.js"></script>
+    </head>
+    <body>
+        <h1>Sudoku Solver</h1>
+        <p style="font-family:'Courier New'">
+        <script>
+            // Board holds the data of the board with all the optional solutions
+            let b = new Board();
+            b.draw();
+            b.removeOptions();
+            let goOn = true;
+            while (goOn) {
+                goOn = false;
+                if (b.lookupAndMarkFound() > 0) {
+                    goOn = true;
+                    b.draw();
+                }
+                if (b.calcNewState() > 0) {
+                    b.removeOptions();
+                    goOn = true;
+                    b.draw();
+                }
+            }
+            document.write("Done!<br/>");
+            b.printOptions() ;
+        </script>
+        </p>
+    </body>
+</html>
